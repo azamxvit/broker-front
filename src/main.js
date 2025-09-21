@@ -1,13 +1,22 @@
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
-import App from './App.vue'
-import router from './router'
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
+import AboutView from '../views/AboutView.vue'
 
-import './assets/index.css'
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: HomeView,
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: AboutView,
+    },
+  ],
+})
 
-const app = createApp(App)
+export default router
 
-app.use(createPinia())
-app.use(router)
-
-app.mount('#app')
